@@ -35,12 +35,12 @@ safety_settings = [
 
 # Create the Gemini Models for Text and Vision respectively
 txt_model = genai.GenerativeModel(
-    model_name="gemini-pro",
+    model_name="gemini-1.0-pro",
     generation_config=generation_config,
     safety_settings=safety_settings,
 )
 vis_model = genai.GenerativeModel(
-    model_name="gemini-pro-vision",
+    model_name="gemini-1.0-pro-vision-latest",
     generation_config=generation_config,
     safety_settings=safety_settings,
 )
