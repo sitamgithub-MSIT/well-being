@@ -8,7 +8,7 @@ import google.generativeai as genai
 
 from dotenv import load_dotenv
 
-# Load the Environment Variables
+# Load the Environment Variables from .env file
 load_dotenv()
 
 # Set the Gemini API Key
@@ -68,7 +68,7 @@ Your role as a medical chatbot is to provide valuable insights and recommendatio
 # HTML Content for the Interface
 TITLE = """<h1 align="center">Well Being 💬</h1>"""
 SUBTITLE = """<h2 align="center">End Preventable Child Deaths: Join the Global Effort to Save Children's Lives!</h2>"""
-DUPLICATE = """
+DESCRIPTION = """
 <div
   style="
     text-align: center;
@@ -165,7 +165,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
     # Add HTML Content
     gr.HTML(TITLE)
     gr.HTML(SUBTITLE)
-    gr.HTML(DUPLICATE)
+    gr.HTML(DESCRIPTION)
 
     with gr.Row():
         # Image UI
