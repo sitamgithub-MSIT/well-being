@@ -1,6 +1,6 @@
 ﻿# Well-Being
 
-This project aims to reduce neonatal and under 5 mortality rates by the year 2030 through information dissemination and raising awareness. It utilizes an Artificial Conversational Entity powered by the Gemini API.
+This project aims to reduce neonatal and under-5 mortality rates by the year 2030 through information dissemination and raising awareness. It utilizes an Artificial Conversational Entity powered by the Gemini API.
 
 ## Tech Stack
 
@@ -22,7 +22,7 @@ Now, open up your local host and you should see the web application running. For
 
 ## Usage
 
-Once the application is up and running, you can interact with the conversational entity through the provided UI. It can answer questions, provide information, and raise awareness about neonatal and under 5 mortality.
+Once the application is up and running, you can interact with the conversational entity through the provided UI. It can answer questions, provide information, and raise awareness about neonatal and under-5 mortality.
 
 ## Contributing
 
@@ -34,4 +34,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or feedback, please contact the project team at their github profiles: [Sitam](https://github.com/sitamgithub-MSIT), [Aharna](https://github.com/aharna), [Avirup](https://github.com/avirupnandi1).
+For any inquiries or feedback, please contact the project team at their GitHub profiles: [Sitam](https://github.com/sitamgithub-MSIT), [Aharna](https://github.com/aharna), [Avirup](https://github.com/avirupnandi1).
