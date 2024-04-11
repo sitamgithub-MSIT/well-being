@@ -4,6 +4,7 @@ This project aims to reduce neonatal and under 5 mortality rates by the year 203
 
 ## Tech Stack
 
+- Python: Python is used as the primary programming language for this project.
 - Gemmini Pro & Gemmini Pro Vision API: These APIs provide advanced natural language processing and computer vision capabilities.
 - Gradio: Gradio is used for building interactive UIs for the chat interface.
 - Hugging Face spaces: Hugging Face spaces is used for collaborative development and deployment of the gradio application.
@@ -35,3 +36,5 @@ This project is licensed under the [MIT License](LICENSE).
 ## Contact
 
 For any inquiries or feedback, please contact the project team at their github profiles: [Sitam](https://github.com/sitamgithub-MSIT), [Aharna](https://github.com/aharna), [Avirup](https://github.com/avirupnandi1).
+
+Happy coding! 🚀
