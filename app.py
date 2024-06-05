@@ -35,12 +35,12 @@ safety_settings = [
 
 # Create the Gemini Models for Text and Vision respectively
 txt_model = genai.GenerativeModel(
-    model_name="gemini-1.0-pro",
+    model_name="gemini-1.5-pro",
     generation_config=generation_config,
     safety_settings=safety_settings,
 )
 vis_model = genai.GenerativeModel(
-    model_name="gemini-1.0-pro-vision-latest",
+    model_name="gemini-pro-vision",
     generation_config=generation_config,
     safety_settings=safety_settings,
 )
@@ -146,13 +146,28 @@ def llm_response(history, text, img):
     list: The updated chat history.
     """
 
+    # Convert chat history to string for context
+    history_str = "\n".join(
+        [
+            f"User: {msg[0]}\nBot: {msg[1]}" if msg[1] else f"User: {msg[0]}"
+            for msg in history
+        ]
+    )
+
     # Generate Response based on the Input
     if not img:
-        response = txt_model.generate_content(f"{system_prompt}User: {text}")
+        # response = txt_model.generate_content(f"{system_prompt}User: {text}")
+        chat_session = txt_model.start_chat(history=[])
+        response = chat_session.send_message(
+            f"{system_prompt}History:\n{history_str}\nUser: {text}"
+        )
     else:
         # Open Image and Generate Response
         img = PIL.Image.open(img)
-        response = vis_model.generate_content([f"{system_prompt}User: {text}", img])
+        chat_session = vis_model.start_chat(history=[])
+        response = chat_session.send_message([f"{system_prompt}\nUser: {text}", img])
+
+        # response = vis_model.generate_content([f"{system_prompt}User: {text}", img])
 
     # Display Response on Chat UI and return the history
     history += [(None, response.text)]
