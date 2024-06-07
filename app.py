@@ -14,6 +14,7 @@ load_dotenv()
 # Set the Gemini API Key
 genai.configure(api_key=os.environ.get("GOOGLE_API_KEY"))
 
+
 # Set up the model configuration for content generation
 generation_config = {
     "temperature": 0.4,
@@ -33,21 +34,10 @@ safety_settings = [
     ]
 ]
 
-# Create the Gemini Models for Text and Vision respectively
-txt_model = genai.GenerativeModel(
-    model_name="gemini-1.5-pro",
-    generation_config=generation_config,
-    safety_settings=safety_settings,
-)
-vis_model = genai.GenerativeModel(
-    model_name="gemini-pro-vision",
-    generation_config=generation_config,
-    safety_settings=safety_settings,
-)
 
 # System Prompt
 system_prompt = """
-Model: "As a trusted medical chatbot, your role is crucial in providing accurate information and guidance to users seeking assistance in reducing preventable deaths of newborns and children under 5 years of age, as well as supporting the health and well-being of pregnant mothers and women. Your focus will be on addressing queries related to neonatal and under-five mortality rates, maternal health, and women's health issues, offering insights and recommendations to support these global health goals.
+As a trusted medical chatbot, your role is crucial in providing accurate information and guidance to users seeking assistance in reducing preventable deaths of newborns and children under 5 years of age, as well as supporting the health and well-being of pregnant mothers and women. Your focus will be on addressing queries related to neonatal and under-five mortality rates, maternal health, and women's health issues, offering insights and recommendations to support these global health goals.
 
 **Analysis Guidelines:**
 
@@ -61,9 +51,28 @@ Model: "As a trusted medical chatbot, your role is crucial in providing accurate
 **Refusal Policy:**
 If the user provides information not related to reducing neonatal and under-five mortality rates, maternal health, or women's health issues, kindly inform them that this chatbot is designed to address queries specific to these global health goals. Encourage them to seek assistance from appropriate sources for other inquiries.
 
-Your role as a medical chatbot is to provide valuable insights and recommendations to support efforts in reducing preventable deaths of newborns and children under 5 years of age, as well as improving maternal and women's health outcomes. Proceed to assist users with their queries, ensuring clarity, empathy, and accuracy in your responses."
+Your role as a medical chatbot is to provide valuable insights and recommendations to support efforts in reducing preventable deaths of newborns and children under 5 years of age, as well as improving maternal and women's health outcomes. Proceed to assist users with their queries, ensuring clarity, empathy, and accuracy in your responses.
 
 """
+
+
+# Define the model name
+model_name = "gemini-1.5-pro"
+
+# Create the Gemini Models for Text and Vision respectively
+txt_model = genai.GenerativeModel(
+    model_name=model_name,
+    generation_config=generation_config,
+    safety_settings=safety_settings,
+    system_instruction=system_prompt,
+)
+vis_model = genai.GenerativeModel(
+    model_name=model_name,
+    generation_config=generation_config,
+    safety_settings=safety_settings,
+    system_instruction=system_prompt,
+)
+
 
 # HTML Content for the Interface
 TITLE = """<h1 align="center">Well Being 💬</h1>"""
@@ -158,14 +167,12 @@ def llm_response(history, text, img):
     if not img:
         # response = txt_model.generate_content(f"{system_prompt}User: {text}")
         chat_session = txt_model.start_chat(history=[])
-        response = chat_session.send_message(
-            f"{system_prompt}History:\n{history_str}\nUser: {text}"
-        )
+        response = chat_session.send_message(f"History:\n{history_str}\nUser: {text}")
     else:
         # Open Image and Generate Response
         img = PIL.Image.open(img)
         chat_session = vis_model.start_chat(history=[])
-        response = chat_session.send_message([f"{system_prompt}\nUser: {text}", img])
+        response = chat_session.send_message([f"User: {text}", img])
 
         # response = vis_model.generate_content([f"{system_prompt}User: {text}", img])
 
