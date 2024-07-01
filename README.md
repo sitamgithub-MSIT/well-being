@@ -20,6 +20,7 @@ The project is structured as follows:
 - `.env.example`: This file contains the environment variables required for the project.
 - `requirements.txt`: This file contains the required dependencies for the project.
 - `README.md`: This file contains the project documentation.
+- `LICENSE`: This file contains the project license.
 
 ## Tech Stack
 
