@@ -19,6 +19,7 @@ The project is structured as follows:
 - `app.py`: This file contains the code for the Gradio application.
 - `.env.example`: This file contains the environment variables required for the project.
 - `requirements.txt`: This file contains the required dependencies for the project.
+- `README.md`: This file contains the project documentation.
 
 ## Tech Stack
 
@@ -32,8 +33,8 @@ The project is structured as follows:
 To get started with this project, follow the steps below:
 
 1. Clone the repository: `git clone https://github.com/sitamgithub-MSIT/well-being.git`
-2. Create a virtual environment: `conda create -n venv python=3.9 -y`
-3. Activate the virtual environment: `conda activate venv`
+2. Create a virtual environment: `python -m venv tutorial-env`
+3. Activate the virtual environment: `tutorial-env\Scripts\activate`
 4. Install the required dependencies: `pip install -r requirements.txt`
 5. Run the Gradio application: `python app.py`
 
