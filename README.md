@@ -55,6 +55,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or feedback, please contact the project team at their github profiles: [Sitam](https://github.com/sitamgithub-MSIT), [Aharna](https://github.com/aharna), [Avirup](https://github.com/avirupnandi1).
+For any inquiries or feedback, please contact the project team at their GitHub profiles: [Sitam](https://github.com/sitamgithub-MSIT), [Aharna](https://github.com/aharna), [Avirup](https://github.com/avirupnandi1).
 
 Happy coding! 🚀
