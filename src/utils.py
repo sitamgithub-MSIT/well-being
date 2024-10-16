@@ -1,21 +1,33 @@
-# Necessary Imports
+# Necessary imports
+import sys
 import base64
+from typing import Optional
+
+# local imports
+from src.logger import logging
+from src.exception import CustomExceptionHandling
 
 
-# Image to Base 64 Converter Function
-def image_to_base64(image_path):
+def image_to_base64(image_path: str) -> Optional[str]:
     """
     Convert an image file to a base64 encoded string.
-
     Args:
         image_path (str): The path to the image file.
-
     Returns:
-        str: The base64 encoded string representation of the image.
+        Optional[str]: The base64 encoded string representation of the image, or None if an error occurs.
     """
-    # Open Image and Encode it to Base64
-    with open(image_path, "rb") as img:
-        encoded_string = base64.b64encode(img.read())
+    try:
+        # Open the image file and convert it to a base64 encoded string
+        with open(image_path, "rb") as img:
+            encoded_string = base64.b64encode(img.read())
 
-    # Return the Encoded String
-    return encoded_string.decode("utf-8")
+        # Log the successful conversion
+        logging.info(f"Image at {image_path} successfully encoded to base64.")
+
+        # Return the base64 encoded string
+        return encoded_string.decode("utf-8")
+
+    # Handle exceptions that may occur during the conversion
+    except Exception as e:
+        # Custom exception handling
+        raise CustomExceptionHandling(e, sys) from e

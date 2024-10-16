@@ -1,9 +1,12 @@
 # Necessary Imports
+import warnings
+warnings.filterwarnings("ignore")
+
 import gradio as gr
 
 # Import the necessary functions from the src folder
-from src.chat import query_message
-from src.llm_response import llm_response
+from src.app.chat import query_message
+from src.app.llm_response import llm_response
 
 
 # HTML Content for the Interface
@@ -38,13 +41,29 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
 
     with gr.Row():
         # Image UI
-        image_box = gr.Image(type="filepath")
+        image_box = gr.Image(type="filepath", height=750)
 
         # Chat UI
-        chatbot = gr.Chatbot(scale=2, height=750)
+        chatbot = gr.Chatbot(
+            scale=2,
+            height=750,
+            type="tuples",
+            show_share_button=True,
+            show_copy_button=True,
+            examples=[
+                {
+                    "text": "Hello! and welcome to Well Being 💬",
+                    "image": None,
+                },
+                {
+                    "text": "Chat with me to get started! 😊",
+                    "image": None,
+                },
+            ],
+        )
     text_box = gr.Textbox(
-        placeholder="Enter text and press enter, or upload an image",
-        container=False,
+        placeholder="Enter your message here...",
+        container=True,
     )
 
     # Button to Submit the Input and Generate Response
