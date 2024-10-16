@@ -13,10 +13,12 @@ def query_message(
 ) -> List[Tuple[str, Optional[str]]]:
     """
     Adds a query message to the chat history.
+
     Args:
         - history (List[Tuple[str, Optional[str]]]): The chat history.
         - txt (str): The text message.
         - img (Optional[str]): The image file path.
+
     Returns:
         List[Tuple[str, Optional[str]]]: The updated chat history.
     """

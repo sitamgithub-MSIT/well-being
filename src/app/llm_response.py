@@ -39,10 +39,12 @@ def llm_response(
 ) -> List[Tuple[Optional[str], Optional[str]]]:
     """
     Generate a response based on the input.
+
     Args:
         - history (List[Tuple[Optional[str], Optional[str]]]): A list of previous chat history.
         - text (str): The input text.
         - img (Optional[str]): The path to an image file (optional).
+
     Returns:
         List[Tuple[Optional[str], Optional[str]]]: The updated chat history.
     """

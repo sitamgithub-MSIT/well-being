@@ -11,8 +11,10 @@ from src.exception import CustomExceptionHandling
 def image_to_base64(image_path: str) -> Optional[str]:
     """
     Convert an image file to a base64 encoded string.
+
     Args:
         image_path (str): The path to the image file.
+
     Returns:
         Optional[str]: The base64 encoded string representation of the image, or None if an error occurs.
     """
